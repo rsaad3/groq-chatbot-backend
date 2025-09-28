@@ -12,27 +12,6 @@ This is a backend service for  **Chatbot Service**, built with:
 
 ---
 
-## 🚀 Run the Service Locally
-
-### Step 1: Build the app
-
-```bash
-mvn clean package
-```
-
-### Step 2: Run it locally with H2 (default)
-
-```bash
-java -jar target/chatbot-0.0.1-SNAPSHOT.jar
-```
-
-By default, it will use:
-
-* `H2 in-memory database`
-* properties from `application-dev.yml`
-* fallback values from `.env` (if defined)
-
----
 
 ## ⚙️ Environment Variables
 
@@ -62,6 +41,32 @@ Copy it before running:
 ```bash
 cp .env.example .env
 ```
+
+Update the `.env` file with the real values.
+
+
+---
+
+
+## 🚀 Run the Service Locally
+
+### Step 1: Build the app
+
+```bash
+mvn clean package
+```
+
+### Step 2: Run it locally with H2 (default)
+
+```bash
+java -jar target/chatbot-0.0.1-SNAPSHOT.jar
+```
+
+By default, it will use:
+
+* `H2 in-memory database`
+* properties from `application-dev.yml`
+* fallback values from `.env` (if defined)
 
 ---
 
