@@ -78,7 +78,7 @@ mvn clean package -DskipTests
 ### Step 2: Start everything
 
 ```bash
-docker compose up --build
+docker-compose up --build
 ```
 
 This will start:
@@ -95,7 +95,7 @@ This will start:
 🧼 Cleanup Docker Resources
 
 ```bash
-docker compose down -v
+docker-compose down -v
 ```
 
 ---
@@ -255,7 +255,7 @@ mvn test
 ## 🧼 Cleanup Docker Resources
 
 ```bash
-docker compose down -v
+docker-compose down -v
 ```
 
 ---
