@@ -1,0 +1,30 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/chatdb}
+    username: ${DATASOURCE_USER:postgres}
+    password: ${DATASOURCE_PASSWORD:password}
+  jpa:
+    hibernate:
+      ddl-auto: ${HIBERNATE_DDL:update}
+    show-sql: ${SHOW_SQL:false}
+    database-platform: ${DB_DIALECT:org.hibernate.dialect.PostgreSQLDialect}
+
+app:
+  api-key: ${API_KEY:test_key}
+  groq-api-url: https://api.groq.com/openai/v1/chat/completions
+  groq-api-key: ${GROQ_API_KEY:dummy_key}
+
+
+  rate:
+    capacity: ${APP_RATE_CAPACITY:10}
+    refill-tokens: ${APP_RATE_REFILL_TOKENS:10}
+    refill-period-seconds: ${APP_RATE_REFILL_PERIOD_SECONDS:60}
+
+logging:
+  file:
+    name: logs/chatbot.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"

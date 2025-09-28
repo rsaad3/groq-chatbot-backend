@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:chatdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+app:
+  api-key: ${API_KEY:test_key}
+  groq-api-url: https://api.groq.com/openai/v1/chat/completions
+  groq-api-key: ${GROQ_API_KEY:YOUR_GROQ_API_KEY}
+
+  rate:
+    capacity: ${APP_RATE_CAPACITY:10}
+    refill-tokens: ${APP_RATE_REFILL_TOKENS:10}
+    refill-period-seconds: ${APP_RATE_REFILL_PERIOD_SECONDS:60}
+
+

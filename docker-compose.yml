@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${DATASOURCE_NAME}
+      POSTGRES_USER: ${DATASOURCE_USER}
+      POSTGRES_PASSWORD: ${DATASOURCE_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  chatbot-app:
+    build: .
+    container_name: chatbot-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: ${DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${DATASOURCE_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DATASOURCE_PASSWORD}
+      API_KEY: ${API_KEY}
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      APP_RATE_CAPACITY: ${APP_RATE_CAPACITY}
+      APP_RATE_REFILL_TOKENS: ${APP_RATE_REFILL_TOKENS}
+      APP_RATE_REFILL_PERIOD_SECONDS: ${APP_RATE_REFILL_PERIOD_SECONDS}
+
+volumes:
+  db_data:
